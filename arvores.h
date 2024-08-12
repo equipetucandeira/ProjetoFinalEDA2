@@ -24,4 +24,3 @@ arvAVL *cria_arvAVL();
 arvLLRB *cria_arvLLRB();
 
 void preOrdem_arvore(arvAVL *raiz);
-void preOrdem_arvore(arvLLRB *raiz);

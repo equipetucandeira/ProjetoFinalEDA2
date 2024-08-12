@@ -7,7 +7,7 @@
 
 void carregaArquivoArvAVL(arvAVL *raizAVL, FILE *arquivo);
 void carregaArquivoLLRB(arvLLRB *raizLLRB, FILE *arquivo);
-myData retornaData(FILE *arquivo);
+myData retornaData(char *linha);
 FILE *abreArquivo(char nomeArquivo[50]);
 int ordenaArquivo(FILE *arquivo);
 
@@ -23,14 +23,14 @@ int main() {
 
   arquivo = abreArquivo("massaDados.csv");
 
-  x = ordenaArquivo(arquivo);
+  /*x = ordenaArquivo(arquivo);
   if (x) {
     printf("Ordenado com sucesso");
   } else {
     printf("Falha ao ordenar");
-  }
+  }*/
 
-  // carregaArquivoArvAVL(raizAVL, arquivo);
+  carregaArquivoArvAVL(raizAVL, arquivo);
   // carregaArquivoArvLLRB(raizLLRB, arquivo);
 
   // chamar AVL ou LLRB. Para executar os dois, seria necesseário abrir o
@@ -54,17 +54,15 @@ FILE *abreArquivo(char nomeArquivo[50]) {
   return arquivo;
 }
 
-myData retornaData(FILE *arquivo) {
-  char aux[300];
+myData retornaData(char *linha) {
   myData data;
-  if (fgets(aux, sizeof(aux), arquivo)) {
-    data.codigo = atoi(strtok(aux, ";"));
+    data.codigo = atoi(strtok(linha, ";"));
     strcpy(data.nome, strtok(NULL, ";"));
     data.idade = atoi(strtok(NULL, ";"));
     strcpy(data.empresa, strtok(NULL, ";"));
     strcpy(data.departamento, strtok(NULL, ";"));
     data.salario = atof(strtok(NULL, "\n"));
-  }
+
   return data;
 }
 
@@ -84,7 +82,7 @@ void carregaArquivoArvAVL(arvAVL *raizAVL, FILE *arquivo) {
       jump = 0;
       continue;
     }
-    data = retornaData(arquivo);
+    data = retornaData(aux);
     insere_arvAVL(raizAVL, data.codigo, data.nome, data.idade, data.empresa,
                   data.departamento, data.salario);
   }
@@ -114,7 +112,7 @@ void carregaArquivoArvLLRB(arvLLRB *raizLLRB, FILE *arquivo) {
       jump = 0;
       continue;
     }
-    data = retornaData(arquivo);
+    data = retornaData(aux);
     insere_arvoreLLRB(raizLLRB, data.codigo, data.nome, data.idade,
                       data.empresa, data.departamento, data.salario);
   }
@@ -138,15 +136,25 @@ int ordenaArquivo(FILE *arquivo) {
   while (fgets(aux, sizeof(aux), arquivo)) {
     size++;
   }
+  if (size <= 0) {
+    printf("O arquivo não contém dados suficientes!\n");
+    return 0;
+  }
   v = (myData *)calloc(size, sizeof(myData));
-
-  rewind(arquivo);
-  while (fgets(aux, sizeof(aux), arquivo)) {
-    if (jump) {
-      jump = 0;
-      continue;
+  if (v == NULL) {
+        printf("Erro ao alocar memória!\n");
+        return 0;
     }
-    v[i] = retornaData(arquivo);
+  rewind(arquivo);
+  size--;
+  if (fgets(aux, sizeof(aux), arquivo) == NULL) {
+        printf("Erro ao ler o cabeçalho do arquivo!\n");
+        free(v);
+        return 0;
+    }
+
+  while (fgets(aux, sizeof(aux), arquivo)) {
+    v[i] = retornaData(aux);
     i++;
   }
   RadixSortLSD(v, size);

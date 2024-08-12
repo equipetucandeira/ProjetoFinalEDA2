@@ -34,3 +34,32 @@
 	<string.h>
 	"arvores.h"
 
+1723478387 source:c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\arvoreavl.c
+	<stdio.h>
+	<stdlib.h>
+	"arvores.h"
+
+1723498112 c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\arvores.h
+	<string.h>
+
+1723478387 source:c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\arvorellrb.c
+	<stdio.h>
+	<stdlib.h>
+	"arvores.h"
+
+1723499157 source:c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\main.c
+	"arvores.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/time.h>
+	<time.h>
+
+1723497969 source:c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\radixsort.c
+	"arvores.h"
+	<assert.h>
+	<errno.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+

@@ -11,10 +11,6 @@
 
 typedef myData T;
 
-int CountingSort(T *, const size_t, int);
-
-int RadixSortLSD(T *, const size_t);
-
 static int GetMax(const T *array, const size_t size) {
   int max = array[0].codigo;
 
@@ -27,7 +23,7 @@ static int GetMax(const T *array, const size_t size) {
   return max;
 }
 
-int CountingSort(T *array, const size_t size, int exponent) {
+static int CountingSort(T *array, const size_t size, int exponent) {
 
   unsigned counting[DECIMAL];
 
@@ -37,7 +33,7 @@ int CountingSort(T *array, const size_t size, int exponent) {
     return ENOMEM;
   }
 
-  memset(counting, 0, DECIMAL * sizeof(T));
+  memset(counting, 0, DECIMAL * sizeof(int));
 
   for (size_t index = 0; index < size; ++index) {
     ++counting[DIGIT(array[index].codigo, exponent)];

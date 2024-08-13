@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1723473469 source:c:\users\joaoruffino\documents\exercicios_c\projetofinaleda2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arvores.h"
+	<sys/time.h>
+	<time.h>
+
+1722995912 source:c:\users\joaoruffino\documents\exercicios_c\projetofinaleda2\arvoreavl.c
+	<stdio.h>
+	<stdlib.h>
+	"arvores.h"
+
+1723473978 c:\users\joaoruffino\documents\exercicios_c\projetofinaleda2\arvores.h
+
+1723001703 source:c:\users\joaoruffino\documents\exercicios_c\projetofinaleda2\arvorellrb.c
+	<stdio.h>
+	<stdlib.h>
+	"arvores.h"
+
+1723473469 source:c:\users\joaoruffino\documents\exercicios_c\projetofinaleda2\radixsort.c
+	<assert.h>
+	<errno.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+
+1723473871 c:\users\joaoruffino\documents\exercicios_c\projetofinaleda2\radixsort.c
+	<assert.h>
+	<errno.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+	"arvores.h"
+
+1723478387 source:c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\arvoreavl.c
+	<stdio.h>
+	<stdlib.h>
+	"arvores.h"
+
+1723498112 c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\arvores.h
+	<string.h>
+
+1723478387 source:c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\arvorellrb.c
+	<stdio.h>
+	<stdlib.h>
+	"arvores.h"
+
+1723499157 source:c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\main.c
+	"arvores.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/time.h>
+	<time.h>
+
+1723497969 source:c:\users\joaoruffino\documents\exercicios_c\teste\projetofinaleda2\radixsort.c
+	"arvores.h"
+	<assert.h>
+	<errno.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+

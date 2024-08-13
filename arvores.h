@@ -1,6 +1,7 @@
 #include <string.h>
 typedef struct NO *arvAVL;
 typedef struct NO *arvLLRB;
+
 typedef struct {
   char nome[50];
   char empresa[50];
@@ -9,6 +10,8 @@ typedef struct {
   int idade;
   float salario;
 } myData;
+typedef myData T;
+int RadixSortLSD(T *array, const size_t size);
 
 int insere_arvAVL(arvAVL *raiz, int valor, char nome[50], int idade,
                   char empresa[50], char departamento[50], float salario);

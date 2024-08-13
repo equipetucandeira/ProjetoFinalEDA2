@@ -1,3 +1,5 @@
+#ifndef RADIX
+#define RADIX
 #include "arvores.h"
 #include <assert.h>
 #include <errno.h>
@@ -9,7 +11,6 @@
 
 #define DIGIT(n, p) (n / p) % DECIMAL
 
-typedef myData T;
 
 static int GetMax(const T *array, const size_t size) {
   int max = array[0].codigo;
@@ -71,3 +72,5 @@ int RadixSortLSD(T *array, const size_t size) {
 
   return EXIT_SUCCESS;
 }
+#endif /* ifndef RADIX */
+

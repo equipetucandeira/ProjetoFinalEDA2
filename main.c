@@ -137,18 +137,18 @@ int ordenaArquivo(FILE *arquivo) {
     size++;
   }
   if (size <= 0) {
-    printf("O arquivo não contém dados suficientes!\n");
+    printf("O arquivo nao contem dados suficientes!\n");
     return 0;
   }
   v = (myData *)calloc(size, sizeof(myData));
   if (v == NULL) {
-        printf("Erro ao alocar memória!\n");
+        printf("Erro ao alocar memoria!\n");
         return 0;
     }
   rewind(arquivo);
   size--;
   if (fgets(aux, sizeof(aux), arquivo) == NULL) {
-        printf("Erro ao ler o cabeçalho do arquivo!\n");
+        printf("Erro ao ler o cabecalho do arquivo!\n");
         free(v);
         return 0;
     }

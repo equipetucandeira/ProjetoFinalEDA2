@@ -5,6 +5,9 @@
 #include <sys/time.h>
 #include <time.h>
 
+#define ARQUIVO_DESORDENADO "massaDados.csv"
+#define ARQUIVO_ORDENADO ""
+
 void carregaArquivoArvAVL(arvAVL *raizAVL, FILE *arquivo);
 void carregaArquivoLLRB(arvLLRB *raizLLRB, FILE *arquivo);
 myData retornaData(char *linha);
@@ -12,29 +15,43 @@ FILE *abreArquivo(char nomeArquivo[50]);
 int ordenaArquivo(FILE *arquivo);
 
 int main() {
+  while (1) {
+    printf("1. AVL\n");
 
-  int x;
-  arvAVL *raizAVL;
-  arvLLRB *raizLLRB;
-  FILE *arquivo;
+    printf("2. LLRB\n");
 
-  raizAVL = cria_arvAVL();
-  raizLLRB = cria_arvLLRB();
+    printf("3. Sair\n");
 
-  arquivo = abreArquivo("massaDados.csv");
+    printf("> ");
 
-  /*x = ordenaArquivo(arquivo);
-  if (x) {
-    printf("Ordenado com sucesso");
-  } else {
-    printf("Falha ao ordenar");
-  }*/
+    int escolha;
+
+    scanf("%d", &escolha);
+
+    if (escolha == 3) {
+      printf("Bye bye bye\n");
+
+      return 0;
+    }
+
+    if (escolha == 1) {} else if (escolha == 2) {} else {}
+  }
+
+
+  switch (escolha) {
+    case 1:
+    {
+      
+    }
+    break;
+
+    case 2:
+    {
+    }
+    break;
+  }
 
   carregaArquivoArvAVL(raizAVL, arquivo);
-  // carregaArquivoArvLLRB(raizLLRB, arquivo);
-
-  // chamar AVL ou LLRB. Para executar os dois, seria necesseário abrir o
-  // arquivo novamente.
 
   return 0;
 }

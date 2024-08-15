@@ -15,12 +15,7 @@ int ordenaArquivo(FILE *arquivo);
 int main() {
     int escolhaArquivo, escolhaArvore;
     char arquivoNome[50];
-    arvAVL *raizAVL;
-    arvLLRB *raizLLRB;
     FILE *arquivo;
-
-    raizAVL = cria_arvAVL();
-    raizLLRB = cria_arvLLRB();
 
     while (1) {
         printf("\nEscolha o arquivo para carregar:\n");
@@ -57,13 +52,21 @@ int main() {
         if (scanf("%d", &escolhaArvore) != 1) {
             break;
         }
-        getchar(); // Limpa o buffer de entrada
+        getchar();
 
         if (escolhaArvore == 1) {
+            arvAVL *raizAVL;
+            raizAVL = cria_arvAVL();
             carregaArquivoArvAVL(raizAVL, arquivo);
+
             //preOrdem_arvAVL(raizAVL);
+            liberar_arvAVL(raizAVL);
         } else if (escolhaArvore == 2) {
+            arvLLRB *raizLLRB;
+            raizLLRB = cria_arvLLRB();
             carregaArquivoArvLLRB(raizLLRB, arquivo);
+            liberar_arvLLRB(raizLLRB);
+
 
         } else {
             printf("Saindo do programa.\n");

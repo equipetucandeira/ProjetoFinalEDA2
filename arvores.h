@@ -20,6 +20,9 @@ int remove_arvoreLLRB(arvLLRB *raiz, int valor);
 
 void confirmaInsercao(int x);
 
+void liberar_arvAVL(arvAVL *raiz);
+void liberar_arvLLRB(arvLLRB *raiz);
+
 arvAVL *cria_arvAVL();
 arvLLRB *cria_arvLLRB();
 

@@ -16,6 +16,15 @@ struct NO{
     int cor;
 };
 
+void liberar_arvLLRB(arvLLRB *raiz){
+    if(raiz == NULL){
+        return;
+    }
+    libera_NO(*raiz);
+    free(raiz);
+}
+
+
 int consulta_arvoreLLRB(arvLLRB *raiz, int valor){
     if(raiz == NULL){
         return 0;

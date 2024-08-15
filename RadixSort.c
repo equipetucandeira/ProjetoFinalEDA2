@@ -9,7 +9,6 @@
 
 #define DIGIT(n, p) (n / p) % DECIMAL
 
-typedef myData T;
 
 static int GetMax(const T *array, const size_t size) {
   int max = array[0].codigo;

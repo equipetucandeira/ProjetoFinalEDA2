@@ -23,6 +23,7 @@ arvAVL *cria_arvAVL(){
     return raiz;
 }
 
+
 void liberar_arvAVL(arvAVL *raiz){
     if(raiz == NULL){
         return;
@@ -31,15 +32,7 @@ void liberar_arvAVL(arvAVL *raiz){
     free(raiz);
 }
 
-void libera_NO(struct NO *no){
-    if(no == NULL){
-        return;
-    }
-    libera_NO(no->esq);
-    libera_NO(no->dir);
-    free(no);
-    no = NULL;
-}
+
 
 int vazia_arvAVL(arvAVL *raiz){
     if(raiz == NULL){
@@ -295,7 +288,7 @@ int remove_arvAVL(arvAVL *raiz, int valor){
 		}else{
 			struct NO *temp = procuramenor((*raiz)->dir);
 			(*raiz)->codigo = temp->codigo;
-			remove_arvAVL((*raiz)->dir, (*raiz)->codigo);
+			remove_arvAVL(&(*raiz)->dir, (*raiz)->codigo);
 			if(fatorBalanceamento_NO(*raiz) >= 2){
 				if(alt_no((*raiz)->esq->dir) <= alt_no((*raiz)->esq->esq)){
 					rotacaoLL(raiz);

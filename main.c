@@ -6,8 +6,9 @@
 #include <time.h>
 #include <stdbool.h>
 
+
 void carregaArquivoArvAVL(arvAVL *raizAVL, FILE *arquivo);
-void carregaArquivoLLRB(arvLLRB *raizLLRB, FILE *arquivo);
+void carregaArquivoArvLLRB(arvLLRB *raizLLRB, FILE *arquivo);
 myData retornaData(char *linha);
 FILE *abreArquivo(char nomeArquivo[50]);
 int ordenaArquivo(FILE *arquivo);
@@ -176,18 +177,18 @@ int ordenaArquivo(FILE *arquivo) {
     size++;
   }
   if (size <= 0) {
-    printf("O arquivo não contém dados suficientes!\n");
+    printf("O arquivo nao contem dados suficientes!\n");
     return 0;
   }
   v = (myData *)calloc(size, sizeof(myData));
   if (v == NULL) {
-        printf("Erro ao alocar memória!\n");
+        printf("Erro ao alocar memoria!\n");
         return 0;
     }
   rewind(arquivo);
   size--;
   if (fgets(aux, sizeof(aux), arquivo) == NULL) {
-        printf("Erro ao ler o cabeçalho do arquivo!\n");
+        printf("Erro ao ler o cabecalho do arquivo!\n");
         free(v);
         return 0;
     }

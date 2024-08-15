@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/time.h>
 #include <time.h>
+#include <stdbool.h>
 
 void carregaArquivoArvAVL(arvAVL *raizAVL, FILE *arquivo);
 void carregaArquivoLLRB(arvLLRB *raizLLRB, FILE *arquivo);
@@ -12,32 +13,67 @@ FILE *abreArquivo(char nomeArquivo[50]);
 int ordenaArquivo(FILE *arquivo);
 
 int main() {
+    int escolhaArquivo, escolhaArvore;
+    char arquivoNome[50];
+    arvAVL *raizAVL;
+    arvLLRB *raizLLRB;
+    FILE *arquivo;
 
-  int x;
-  arvAVL *raizAVL;
-  arvLLRB *raizLLRB;
-  FILE *arquivo;
+    raizAVL = cria_arvAVL();
+    raizLLRB = cria_arvLLRB();
 
-  raizAVL = cria_arvAVL();
-  raizLLRB = cria_arvLLRB();
+    while (1) {
+        printf("\nEscolha o arquivo para carregar:\n");
+        printf("1. Arquivo desordenado\n");
+        printf("2. Arquivo ordenado\n");
+        printf("Outro. Sair\n");
+        printf("Escolha uma opcao: ");
+        if (scanf("%d", &escolhaArquivo) != 1) {
+            break;
+        }
+        getchar(); // Limpa o buffer de entrada
 
-  arquivo = abreArquivo("massaDados.csv");
+        if (escolhaArquivo == 1) {
+            strcpy(arquivoNome, "massaDados.csv");
+        } else if (escolhaArquivo == 2) {
+            arquivo = fopen("massaDados.csv", "r");
+            if (!ordenaArquivo(arquivo)) {
+                printf("Erro ao ordenar o arquivo.\n");
+                continue;
+            }
+            strcpy(arquivoNome, "sorted_massaDados.csv");
+        } else {
+            printf("Saindo do programa.\n");
+            break;
+        }
 
-  /*x = ordenaArquivo(arquivo);
-  if (x) {
-    printf("Ordenado com sucesso");
-  } else {
-    printf("Falha ao ordenar");
-  }*/
+        arquivo = abreArquivo(arquivoNome);
 
-  carregaArquivoArvAVL(raizAVL, arquivo);
-  // carregaArquivoArvLLRB(raizLLRB, arquivo);
+        printf("\nEscolha a arvore para inserir os dados:\n");
+        printf("1. Arvore AVL\n");
+        printf("2. Arvore LLRB\n");
+        printf("Outro. Sair\n");
+        printf("Escolha uma opcao: ");
+        if (scanf("%d", &escolhaArvore) != 1) {
+            break;
+        }
+        getchar(); // Limpa o buffer de entrada
 
-  // chamar AVL ou LLRB. Para executar os dois, seria necesseário abrir o
-  // arquivo novamente.
+        if (escolhaArvore == 1) {
+            carregaArquivoArvAVL(raizAVL, arquivo);
+            //preOrdem_arvAVL(raizAVL);
+        } else if (escolhaArvore == 2) {
+            carregaArquivoArvLLRB(raizLLRB, arquivo);
 
-  return 0;
+        } else {
+            printf("Saindo do programa.\n");
+            break;
+        }
+    }
+
+    return 0;
 }
+
 
 FILE *abreArquivo(char nomeArquivo[50]) {
   FILE *arquivo;
